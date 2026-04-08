@@ -1,1 +1,26 @@
+Test Case: TC-PERF-01
+Peak Load Stress Test (3,000 Concurrent Users)
 
+1. Description
+Simulate 3,000 concurrent users hitting the landing page over a 5-minute ramp-up period to evaluate server response time and error rates.
+
+2. Pre-conditions
+- JMeter installed and added to System PATH.
+- `Test Plan.jmx` configured with `https://qnova.uk`.
+- No other high-CPU applications running on the local machine.
+
+3. Execution Steps
+ Step | Action | Expected Result |
+ :--- | :--- | :--- |
+1 | Navigate to project folder in Terminal. | Directory is accessible. |
+2 | Execute command: `jmeter -n -t "Test Plan.jmx" -l res.csv -e -o ./dash` | Test begins execution in CLI mode. |
+3 | Monitor summary lines in Terminal. | Errors remain < 1%. |
+4 | Analyze the generated HTML Dashboard. | Response time is within SLA (< 2s). |
+
+4. Pass/Fail Criteria
+- **Pass:** Server handles load with 0% error rate.
+- **Fail:** Server returns 5xx errors or response time exceeds 5 seconds.
+
+5. Actual Results (Audit Log)
+- Status:LIMIT WAS REACHED
+- Observations:** Test successfully reached 2,016 threads. Beyond this, the local macOS kernel restricted further thread creation (`EAGAIN` error).

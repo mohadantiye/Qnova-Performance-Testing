@@ -1,1 +1,25 @@
+Performance Test Plan: Qnova.uk
+Project: Scalability and Stability
 
+Introduction
+The purpose of this plan is to outline the strategy for testing the `qnova.uk` web infrastructure to ensure it can handle a peak load of 3,000 concurrent users.
+
+2. Test Objectives
+- Identify the maximum concurrent user capacity of the server.
+- Measure response times at 50, 100, 500, and 3,000 user intervals.
+- Determine the system's "Breaking Point."
+
+3. Scope
+- In-Scope:** Primary landing page GET requests.
+- out-of-Scope: Database writes, payment gateways, or third-party API calls.
+
+4. Tools & Environment
+- Load Testing Tool:** Apache JMeter 5.6.3
+- Infrastructure:** macOS (Local Machine)
+- Reporting:** JMeter HTML Dashboard & GitHub README.
+
+5. Risk Assessment
+- Risk: High load might trigger a firewall block.
+- Mitigation: Use a conservative ramp-up period (300s for 3,000 users).
+- Risk:** Local machine hardware limits.
+- Mitigation: Use JMeter CLI (Non-GUI) mode to save system resources.
